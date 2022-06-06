@@ -27,11 +27,9 @@ int main()
 
     printf("%f\n",my->get_float_value(my->self));
 
+    printf("%d\n", my->get_type(my->self));
 
     destroy(my);
-
-
-    
 
 
     return 0;

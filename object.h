@@ -33,6 +33,7 @@ typedef void (*set_int_t)(Object *, int32_t);
 typedef void (*set_float_t)(Object *, float);
 
 
+kind _get_type(Object *);
 const char *_get_key(Object *obj);
 const char *_get_string(Object *obj);
 int32_t _get_int(Object *obj);
@@ -45,6 +46,7 @@ void _set_float(Object *, float);
 struct operation{
 
     Object *self;
+    get_type_t get_type;
     get_float_value_t get_float_value;
     get_int_value_t get_int_value;
     get_key_t get_key;

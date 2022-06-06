@@ -139,6 +139,7 @@ method *new_obj(const char *key, void *ele, kind type){
     meth->set_float = _set_float;
     meth->set_key = _set_key;
     meth->set_string = _set_string;
+    meth->get_type = _get_type;
 
     return meth;
 
