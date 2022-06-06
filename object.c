@@ -66,10 +66,15 @@ void _set_key(Object *self, const char *key){
 }
 void _set_string(Object *self, const char *string){
 
-    if (self->t_string)
+    if (self->type == TYPE_STRING)
     {
-        free(self->t_string);
+        self->type = TYPE_STRING;
+        self->t_string = realloc(self->t_string, SIZE_STRING(string));
+        if(!self->t_string)exit(EXIT_FAILURE);
+        strcpy(self->t_string, string);
+        return;
     }
+    
 
     self->type = TYPE_STRING;
     self->t_string = malloc(SIZE_STRING(string));
@@ -133,6 +138,7 @@ method *new_obj(const char *key, void *ele, kind type){
     meth->set_int = _set_int;
     meth->set_float = _set_float;
     meth->set_key = _set_key;
+    meth->set_string = _set_string;
 
     return meth;
 
@@ -146,8 +152,9 @@ void destroy(method *meth){
     {
         free(me->t_string);
     }
-    free(me->key);
     
+    free(me->key);
+
     free(me);
 
 }

@@ -16,6 +16,8 @@ typedef enum{
 
 /*entity*/
 typedef struct object Object;
+
+
 typedef struct operation method;
 
 /*method*/
